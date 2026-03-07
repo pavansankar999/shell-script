@@ -8,8 +8,8 @@ then
     exit 1 
 fi
 
-# Installing MySQL (using mysql-server for AWS Linux)
-dnf install mysql-server -y
+# Changed 'mysql-server' to 'mariadb105-server'
+dnf install mariadb105-server -y
 
 if [ $? -ne 0 ]
 then 
@@ -19,7 +19,6 @@ else
      echo "my sql installation is successful"
 fi
 
-# Installing Git
 dnf install git -y
 
 if [ $? -ne 0 ]
