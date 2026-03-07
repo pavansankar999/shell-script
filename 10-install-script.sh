@@ -17,4 +17,14 @@ then
 else
      echo "my sql installtion is successful"
 fi
-dnf install mysql -y
+
+
+dnf install git -y
+
+if [ $? -ne 0 ]
+then 
+    echo "my git installtion is successful"
+    exit 1
+else
+     echo "my git installtion is successful"
+fi
