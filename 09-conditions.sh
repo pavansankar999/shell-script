@@ -1,8 +1,8 @@
 #!/bin/bash
-
-if(number -gt 100)
+NUMBER=2
+if([ $NUMBER -gt 100 ])
 then 
-    echo "number is grater than 100"
-esle
+    echo "number is greater than 100"
+else
     echo "number is less than 100"
 fi
