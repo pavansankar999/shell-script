@@ -2,40 +2,42 @@
 
 USERID=$(id -u)
 
-if [ $USERID -ne 0 ]
-    
+# Function to check the status of the previous command
 VALIDATE(){
-    if [$1 -ne 0]
+    if [ $1 -ne 0 ]  # Fixed: Added spaces inside brackets
     then  
-        echo "$2 installation failed"
+        echo "Error:: $2 installation failed"
         exit 1
     else
         echo "$2 installation is successful"
     fi
 }
 
+# Check if the user has root/sudo access
 if [ $USERID -ne 0 ]
 then
-    echo "error:: yo must have sudo accss to execute this script
+    echo "Error:: You must have sudo access to execute this script" # Fixed: Added missing closing quote
     exit 1 
 fi
 
-dnf list installed mysql
+# MySQL Installation logic
+dnf list installed mysql-server &> /dev/null # Redirect output to keep it clean
 
 if [ $? -ne 0 ]
 then
     dnf install mysql-server -y
-    VALIDATE $? "mysql"
+    VALIDATE $? "MySQL"
 else
-    echo "mysql is already installed"
+    echo "MySQL is already installed"
 fi
 
-dnf list installed git 
+# Git Installation logic
+dnf list installed git &> /dev/null
 
 if [ $? -ne 0 ]
 then
     dnf install git -y
-    VALIDATE $? "git"
+    VALIDATE $? "Git"
 else
-    echo "git is already installed"
+    echo "Git is already installed"
 fi
