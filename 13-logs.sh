@@ -5,6 +5,7 @@ R="\e[35M"
 G="\e[32M"
 Y="\e[33M"
 LOGS_FOLDER="/var/log/shellscript-logs"
+LOG_FILE=$(echo $0 | cut -d "." -f1)
 
 VALIDATE(){
 
